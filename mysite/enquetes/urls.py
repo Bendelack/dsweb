@@ -1,9 +1,10 @@
 from . import views
 from django.urls import path
 
+app_name = 'enquetes'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:pergunta_id>/', views.detalhes, name='detalhes'),
-    path('<int:pergunta_id>/votacao', views.votacao, name='votacao'),
-    path('<int:pergunta_id>/resultado', views.resultado, name='resultado'),
+    path('<int:pergunta_id>/votacao/', views.votacao, name='votacao'),
+    path('<int:pergunta_id>/resultado/', views.resultado, name='resultado'),
 ]
