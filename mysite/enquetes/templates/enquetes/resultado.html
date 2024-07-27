@@ -1,21 +1,21 @@
 <html>
     <head>
-        <tltle>App Enquetes</tltle>
+        <title>App Enquetes</title>
     </head>
     <body>
         <h1>Aplicação de Enquetes - DSWeb</h1>
-        <h2>Parcial da Enquete #{{ enquete.id }}</h2>
-        <h2>{{ enquete.texto }}</h2>
-        <p><i>{{ enquete.data_pub }}</i></p>
-        <p>Qunatidade de votos por alternativas:</p>
+        <h2>Parcial da Enquete #{{ pergunta.id }}</h2>
+        <h2>{{ pergunta.texto }}</h2>
+        <p><i>{{ pergunta.data_pub }}</i></p>
+        <p>Quantidade de votos por alternativas:</p>
         <ul>
-            {% for alt in enquete.alternativa_set.all %}
+            {% for alt in pergunta.alternativa_set.all %}
                 <li>
                     {{ alt.texto }} = {{ alt.quant_votos }} voto{{ alt.quant_votos | pluralize }}
                 </li>
             {% endfor %}
         </ul>
-        <a href="{% url 'enquetes:votacao' enquete.id %}">Votar Novamente</a>
+        <a href="{% url 'enquetes:votacao' pergunta.id %}">Votar Novamente?</a>
 
     </body>
 </html>

@@ -1,20 +1,20 @@
 <html>
     <head>
-        <tltle>App Enquetes</tltle>
+        <title>App Enquetes</title>
     </head>
     <body>
         <h1>Aplicação de Enquetes - DSWeb</h1>
-        <h2>Enquete #{{ enquete.id }}</h2>
-        <h2>{{ enquete.texto }}</h2>
-        <p><i>{{ enquete.data_pub }}</i></p>
+        <h2>Enquete #{{ pergunta.id }}</h2>
+        <h2>{{ pergunta.texto }}</h2>
+        <p><i>{{ pergunta.data_pub }}</i></p>
         {% if error %}
             <p><b>{{ error }}</b></p>
         {% endif %}
         <p>Selecione a alternativa desejada:</p>
-        <form action="{% url 'enquetes:votacao' enquete.id %}" method="post">
+        <form action="{% url 'enquetes:votacao' pergunta.id %}" method="post">
             {% csrf_token %}
             <ul>
-                {% for alt in enquete.alternativa_set.all %}
+                {% for alt in pergunta.alternativa_set.all %}
                     <li>
                         <input type="radio" name="escolha" value="{{ alt.id }}" id="alt{{ forloop.counter }}"/>
                         <label for="alt{{ forloop.counter }}">
