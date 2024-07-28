@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-llli2o47@bky^@v1id8boe-v$87!k*hpnubnsgm$3*_-zf(f%)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Bendelack.pythonanywhere.com']
+ALLOWED_HOSTS = ['Bendelack.pythonanywhere.com', 'localhost']
 
 
 # Application definition

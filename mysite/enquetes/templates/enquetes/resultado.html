@@ -15,7 +15,8 @@
                 </li>
             {% endfor %}
         </ul>
-        <a href="{% url 'enquetes:votacao' pergunta.id %}">Votar Novamente?</a>
+        <a href="{% url 'enquetes:detalhes' pergunta.id %}">Votar Novamente?</a>&nbsp;
+        <a href="{% url 'enquetes:index' %}">Voltar</a>
 
     </body>
 </html>

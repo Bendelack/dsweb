@@ -1,17 +1,18 @@
 <html>
     <head>
         <title>App Enquetes</title>
-    </head
+    </head>
     <body>
         <h1>Aplicação Enquetes - DSWeb 2024.1</h1>
-        {% if lista_enquetes %}
+        {% if pergunta_list %}
             <h3>Lista de Enquetes Cadastradas</h3>
             <ul>
-                {% for p in lista_enquetes %}
+                {% for p in pergunta_list %}
                     <li>
                         <a href="{% url 'enquetes:detalhes' p.id %}">
                             {{ p.texto }}
-                        </a>
+                        </a>&nbsp;&nbsp;
+                        <a href="{% url 'enquetes:resultado' p.id %}">(Ver Parcial)</a>
                     </li>
                 {% endfor %}
             </ul>

@@ -11,7 +11,7 @@
             <p><b>{{ error }}</b></p>
         {% endif %}
         <p>Selecione a alternativa desejada:</p>
-        <form action="{% url 'enquetes:votacao' pergunta.id %}" method="post">
+        <form action="{% url 'enquetes:detalhes' pergunta.id %}" method="post">
             {% csrf_token %}
             <ul>
                 {% for alt in pergunta.alternativa_set.all %}
@@ -25,6 +25,8 @@
             </ul>
             <input type="submit" value="Registre seu voto"/>
         </form>
+        <hr>
+        <a href="{% url 'enquetes:index' %}">Voltar</a>
 
     </body>
 </html>
