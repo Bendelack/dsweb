@@ -3,6 +3,9 @@
     margin:0;
     padding:0;
 }
+html {
+    font-size: 120%;
+}
 a {
     text-decoration:none;
 }
@@ -54,7 +57,7 @@ div.container small {
     color:#00bacd;
 }
 .item-enquetes {
-    border-radius:40px;
+    border-radius:10px;
     background-color:#00ff94;
     margin:20px;
     padding: 2%;
@@ -65,16 +68,26 @@ div.container small {
 .item-enquetes a:hover {
     text-decoration:underline;
 }
-#voltar {
+#voltar, #votar {
     padding:10px;
     border-radius:20px;
     background-color:none;
-    border:1px solid #00bacd;
+}
+#voltar {
     color:#00bacd;
+    border:1px solid #00bacd;
 }
 #voltar:hover {
     color:#ffffff;
     background-color:#00bacd;
+}
+#votar {
+    color:#00ff94;
+    border:1px solid #00ff94;
+}
+#votar:hover {
+    color:#ffffff;
+    background-color:#00ff94;
 }
 #error {
     color:#ff0000;
@@ -83,12 +96,17 @@ div.container small {
     color:#00bacd;
 }
 #submit-vote {
-    padding:50px;
-    border-radius:20px;
+    padding:10px;
+    border-radius:5px;
     background-color:00ff94;
     border:1px solid #00bacd;
     color:#ffffff;
     cursor:pointer;
+    margin-bottom:20px;
+}
+#submit-vote:hover{
+    background-color:transparent;
+    color:00bacd;
 }
 div.container ul, div.container form ul {
     padding:10px;

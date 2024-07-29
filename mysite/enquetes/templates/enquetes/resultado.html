@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>App Enquetes</title>
+        <title>Parciais</title>
         <link rel="stylesheet" type="text/css" href="{% static '/enquetes/css/style.css' %}">
     </head>
     <body>
@@ -20,7 +20,7 @@
             <h3>Parcial da Enquete Nº {{ pergunta.id }}</h3>
             <h3>{{ pergunta.texto }}</h3>
             <small><i>{{ pergunta.data_pub }}</i></small>
-            <h4>Quantidade de votos por alternativas:</h4>
+            <h4>Quantidade de votos por alternativa</h4>
             <ul>
                 {% for alt in pergunta.alternativa_set.all %}
                     <li>
@@ -31,7 +31,7 @@
             <hr>
             <br>
             <div>
-                <a href="{% url 'enquetes:detalhes' pergunta.id %}">Votar Novamente?</a>&nbsp;
+                <a href="{% url 'enquetes:detalhes' pergunta.id %}" id="votar">Votar Novamente?</a>&nbsp;
                 <a href="{% url 'enquetes:index' %}" id="voltar">Voltar</a>
             </div>
         </div>
