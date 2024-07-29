@@ -1,12 +1,27 @@
+{% load static %}
 <html>
     <head>
-        <title>DSWeb 2024.1</title>
+        <title>Raíz</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/raiz/css/style.css' %}" >
     </head>
     <body>
-        <h1>Disciplina DSWeb 2024.1</h1>
-        <h3>Aplicações Criadas</h3>
-        <ol>
-            <li><a href='/enquetes/'>Aplicação de Enquetes</a></li>
-        </ol>
+        <header>
+            <p>Disciplina DSWeb 2024.1 - rBendelack</p>
+        </header>
+        <div class="breadcrumb"><small><a href="/">raíz</a>&nbsp&nbsp>></small></div>
+        <div class="container" >
+            <h1>Aplicações disponíveis</h1>
+            <ol>
+                <li class="app-enquetes-div">
+                    <img src="{% static 'raiz/img/quiz_picture.jpg' %}">
+                    <div>
+                        <h2>Aplicação de Enquetes</h2>
+                        <p>Confira as enquetes mais recentes, compartilhe a sua opinião e veja os resultados parciais.</p>
+                        <br>
+                        <p><a href='{% url 'enquetes:index' %}' id="access-button">Acessar</a></p>
+                    </div>
+                </li>
+            </ol>
+        </div>
     </body>
 </html>

@@ -1,24 +1,35 @@
+{% load static %}
 <html>
     <head>
         <title>App Enquetes</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/enquetes/css/style.css' %}" >
     </head>
     <body>
-        <h1>Aplicação Enquetes - DSWeb 2024.1</h1>
-        {% if pergunta_list %}
-            <h3>Lista de Enquetes Cadastradas</h3>
-            <ul>
-                {% for p in pergunta_list %}
-                    <li>
-                        <a href="{% url 'enquetes:detalhes' p.id %}">
-                            {{ p.texto }}
-                        </a>&nbsp;&nbsp;
-                        <a href="{% url 'enquetes:resultado' p.id %}">(Ver Parcial)</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <header>
+            <p>Aplicação de Enquetes - DSWeb 2024.1</p>
+        </header>
+        <div class="breadcrumb"><small><a href="{% url 'raiz:index' %}">raíz</a>&nbsp&nbsp>>&nbsp&nbsp<a href="{% url 'enquetes:index' %}">enquetes</a>&nbsp&nbsp>></small></div>
+        <div class="container">
+            {% if pergunta_list %}
+                <h3>Enquetes Disponíveis</h3>
+                <img src="{% static 'enquetes/img/questions_image.jpeg' %}">
+                <ul>
+                    {% for p in pergunta_list %}
+                        <li class="item-enquetes">
+                            <a href="{% url 'enquetes:detalhes' p.id %}">
+                                {{ p.texto }}
+                            </a>
+                            <p><a href="{% url 'enquetes:resultado' p.id %}">(Ver Parcial)</a></p>
+                        </li>
+                    {% endfor %}
+                </ul>
 
-        {% else %}
-            <p>Nenhuma enquete cadastrada até o momento.</p>
-        {% endif %}
+            {% else %}
+                <p>Nenhuma enquete cadastrada até o momento.</p>
+            {% endif %}
+            <hr>
+            <br>
+            <p><a href="{% url 'raiz:index' %}" id="voltar">Voltar para a página inicial</a></p>
+        </div>
     </body>
 </html>

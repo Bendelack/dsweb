@@ -1,32 +1,40 @@
+{% load static %}
 <html>
     <head>
         <title>App Enquetes</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/enquetes/css/style.css' %}" >
     </head>
     <body>
-        <h1>Aplicação de Enquetes - DSWeb</h1>
-        <h2>Enquete #{{ pergunta.id }}</h2>
-        <h2>{{ pergunta.texto }}</h2>
-        <p><i>{{ pergunta.data_pub }}</i></p>
-        {% if error %}
-            <p><b>{{ error }}</b></p>
-        {% endif %}
-        <p>Selecione a alternativa desejada:</p>
-        <form action="{% url 'enquetes:detalhes' pergunta.id %}" method="post">
-            {% csrf_token %}
-            <ul>
-                {% for alt in pergunta.alternativa_set.all %}
-                    <li>
-                        <input type="radio" name="escolha" value="{{ alt.id }}" id="alt{{ forloop.counter }}"/>
-                        <label for="alt{{ forloop.counter }}">
-                            {{ alt.texto }}
-                        </label>
-                    </li>
-                {% endfor %}
-            </ul>
-            <input type="submit" value="Registre seu voto"/>
-        </form>
-        <hr>
-        <a href="{% url 'enquetes:index' %}">Voltar</a>
+        <header>
+            <p>Aplicação de Enquetes - DSWeb 2024.1</p>
+        </header>
+        <div class="breadcrumb"><small><a href="{% url 'raiz:index' %}">raíz</a>&nbsp&nbsp>>&nbsp&nbsp<a href="{% url 'enquetes:index' %}">enquetes</a>&nbsp&nbsp>>&nbsp&nbsp<a href="{% url 'enquetes:detalhes' pergunta.id %}">{{pergunta.texto}}</a>&nbsp&nbsp>></small></div>
+        <div class="container">
+            <h3>Enquete Nº {{ pergunta.id }}</h3>
+            <h3>{{ pergunta.texto }}</h3>
+            <small><i>{{ pergunta.data_pub }}</i></small>
+            {% if error %}
+                <p id="error"><b>{{ error }}</b></p>
+            {% endif %}
+            <h3>Selecione a alternativa desejada:</h3>
+            <form action="{% url 'enquetes:detalhes' pergunta.id %}" method="post">
+                {% csrf_token %}
+                <ul>
+                    {% for alt in pergunta.alternativa_set.all %}
+                        <li id="item-alternativa">
+                            <input type="radio" name="escolha" value="{{ alt.id }}" id="alt{{ forloop.counter }}"/>
+                            <label for="alt{{ forloop.counter }}">
+                                {{ alt.texto }}
+                            </label>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <input type="submit" value="Registre seu voto" id="submit-vote"/>
+            </form>
+            <hr>
+            <br>
+            <a href="{% url 'enquetes:index' %}" id="voltar">Voltar</a>
+        </div>
 
     </body>
 </html>

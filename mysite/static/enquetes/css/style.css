@@ -1,0 +1,102 @@
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+a {
+    text-decoration:none;
+}
+body {
+    background-color:#b3f8ff;
+}
+body * {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+header {
+    background-color:#00b272;
+    color:#ffffff;
+    padding:1%;
+}
+div.container {
+    padding: 2%;
+}
+div.container h3 {
+    color:#00b272;
+}
+div.container h4 {
+    color:#00ff94;
+}
+div.breadcrumb {
+    width:50%;
+    margin:10px auto;
+    padding:1%;
+    text-align:center;
+    background-color:00bacd;
+    border-radius:50px;
+}
+div.breadcrumb * {
+    text-decoration:none;
+    color:#ffffff;
+}
+div.breadcrumb small a:hover{
+    text-decoration:underline;
+}
+ul * {
+    list-style-position:inside;
+    list-style:none;
+    text-decoration:none;
+}
+div.container img {
+    border-radius:50px;
+    margin:10px;
+}
+div.container small {
+    color:#00bacd;
+}
+.item-enquetes {
+    border-radius:40px;
+    background-color:#00ff94;
+    margin:20px;
+    padding: 2%;
+}
+.item-enquetes * {
+    color:#ffffff;
+}
+.item-enquetes a:hover {
+    text-decoration:underline;
+}
+#voltar {
+    padding:10px;
+    border-radius:20px;
+    background-color:none;
+    border:1px solid #00bacd;
+    color:#00bacd;
+}
+#voltar:hover {
+    color:#ffffff;
+    background-color:#00bacd;
+}
+#error {
+    color:#ff0000;
+}
+#item-alternativa {
+    color:#00bacd;
+}
+#submit-vote {
+    padding:50px;
+    border-radius:20px;
+    background-color:00ff94;
+    border:1px solid #00bacd;
+    color:#ffffff;
+    cursor:pointer;
+}
+div.container ul, div.container form ul {
+    padding:10px;
+}
+/* vasco
+USED COLORS
+- b3f8ff; body
+- 00b272; header
+- 00bacd; breadcrumb
+- 00ff94; apps_list
+*/
