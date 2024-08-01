@@ -1,5 +1,6 @@
+from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
 from .models import Pergunta, Alternativa
 from django.views import View
@@ -14,11 +15,11 @@ def IndexView(generic.ListView):
 ## class IndexView funcionando normalmente
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        enquetes = Pergunta.objects.order_by('-data_pub')[:10]
+        enquetes = Pergunta.objects.filter(data_pub__lte=timezone.now()).order_by('-data_pub')
         contexto = { 'pergunta_list': enquetes }
         return render(request, 'enquetes/index.html', contexto)
 
-    
+
 
     # template_name = 'enquetes/index.html'
     # context_object_name = 'lista_enquetes'
@@ -36,6 +37,9 @@ class DetalhesView(View):
     def get(self, request, *args, **kwargs):
         pergunta_id = kwargs['pk'] # o atributo pk vem na variável *args
         pergunta = get_object_or_404(Pergunta, pk = pergunta_id)
+        agora = timezone.now()
+        if pergunta.data_pub > agora:
+            raise Http404('Identificador de enquete inválido')
         contexto = { 'pergunta': pergunta }
         return render(request, self.template, contexto)
 
@@ -51,7 +55,7 @@ class DetalhesView(View):
         else:
             alt.quant_votos += 1
             alt.save()
-            return HttpResponseRedirect(reverse('enquetes:resultado', args=(pergunta.id,)))    
+            return HttpResponseRedirect(reverse('enquetes:resultado', args=(pergunta.id,)))
     # model = Pergunta
     # template_name = 'enquetes/pergunta_detail.html'
 """
@@ -65,7 +69,7 @@ class ResultadoView(View):
         pergunta = get_object_or_404(Pergunta, pk = pergunta_id)
         contexto = { 'pergunta': pergunta }
         return render(request, 'enquetes/resultado.html', contexto)
-    
+
 
 
 
