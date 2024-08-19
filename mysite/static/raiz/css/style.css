@@ -42,6 +42,7 @@ div.container ol {
 }
 div.container ol li{
     display:flex;
+    margin:20px;
 }
 div.container ol li * {
     text-decoration:none;

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['Bendelack.pythonanywhere.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'financas.apps.FinancasConfig',
     'raiz.apps.RaizConfig',
     'enquetes.apps.EnquetesConfig',
     'django.contrib.admin',
