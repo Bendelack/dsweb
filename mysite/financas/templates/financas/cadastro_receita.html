@@ -1,0 +1,35 @@
+{% extends 'financas/base.html' %}
+{% block cabecalho %}
+<title>Cadastro de Receita</title>
+{% endblock %}
+
+
+{% block conteudo %}
+
+    <form action="{% url 'financas:cadastro-receita' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Cadastre uma nova Receita</h2>
+
+        <label for="nome">Nome</label>
+        {{ form.nome }}
+
+        <label for="descricao">Descrição</label>
+        {{ form.descricao }}
+
+        <label for="data">Data</label>
+        {{ form.data }}
+
+        <label for="valor">Valor</label>
+        {{ form.valor }}
+
+        <label for="balancete">Selecione o Balancete</label>
+        <select name="balancete">
+            {% for b in balancetes %}
+            <option value="{{ b.id }}">{{ b.nome }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+{% endblock %}

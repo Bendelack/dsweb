@@ -1,0 +1,27 @@
+<html>
+    <head>
+        {% block cabecalho %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <small>Aplicação para Gerenciamento de Finanças Pessoais</small>
+            {% if user.is_authenticated %}
+            <h2>Olá, {{ user.username }}</h2>
+            <a href="{% url 'logout' %}?next={% url 'financas:index' %}">logout</a>
+            {% else %}
+            <a href="{% url 'login' %}">Login</a> |
+            <a href="{% url 'financas:cadastro-usuario' %}">Cadastre-se</a>
+            {% endif %}
+        </header>
+
+
+
+        {% block conteudo %}
+
+        {% endblock %}
+
+        <p>
+            <a href="{% url 'financas:index' %}">página inicial</a>
+        </p>
+    </body>
+</html>

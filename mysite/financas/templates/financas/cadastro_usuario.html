@@ -1,0 +1,20 @@
+{% extends 'financas/base.html' %}
+{% block cabecalho %}
+<title>Cadastre-se</title>
+{% endblock %}
+
+{% block conteudo %}
+
+    <form action="{% url 'financas:cadastro-usuario' %}" method="post" enctype="multipart/data-form">
+        {% csrf_token %}
+        <h2>Cadastre-se para criar Balancetes</h2>
+        <label for="nome">Nome de Usuário</label>
+        {{ form.username }}
+        <label for="senha">Senha</label>
+        {{ form.password }}
+        <input type="submit" value="Enviar">
+
+        <small>Já tem conta? <a href="/accounts/login">Fazer login</a></small>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'financas/base.html' %}
+{% block cabecalho %}
+<title>Cadastrar Balancete</title>
+{% endblock %}
+
+{% block conteudo %}
+        <form action="{% url 'financas:cadastro-balancete' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Cadastre um novo Balancete</h2>
+            <label for="nome">Nome</label>
+            {{ form.nome }}
+            <label for="data">Data</label>
+            {{ form.data }}
+            <input type="submit" value="Enviar">
+        </form>
+{% endblock %}

@@ -1,8 +1,9 @@
-<html>
-    <head>
-        <title>Gerenciamento de Finanças Pessoais</title>
-    </head>
-    <body>
-        <h1>Bem-vinde ao App Finanças.</h1>
-    </body>
-</html>
+{% extends 'financas/base.html' %}
+{% block cabecalho %}
+<title>Gerenciamento de Finanças Pessoais</title>
+{% endblock %}
+
+{% block conteudo %}
+    <h1>Bem-vindo ao App Finanças.</h1>
+    <a href="{% url 'financas:gerenciar-financas' %}">Gerenciar Finanças</a>
+{% endblock %}

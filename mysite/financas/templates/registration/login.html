@@ -1,0 +1,41 @@
+{% extends 'financas/base.html' %}
+{% block cabecalho %}
+<title>Login</title>
+{% endblock %}
+{% block menu %}{% endblock %}
+{% block conteudo %}
+
+    <h1>Realizar o Login</h1>
+
+    {% if next %}
+    <p>É necessário estar logado para acessar essa página.</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <p>Senha e/ou nome de usuário incorretos. Tente novamente.</p>
+        {% endif %}
+
+        <label for="username">Username</label>
+        {{ form.username }}
+
+        <label for="password">Senha</label>
+        {{ form.password }}
+
+        <input type="submit" Value="Entrar">
+        {% if next %}
+        <input type="hidden" name="next" value="{{ next }}"/>
+        {% else %}
+        <input type="hidden" name="next" value="{% url 'financas:index' %}"/>
+        {% endif %}
+
+    </form>
+
+    <small>Não tem conta ainda? <a href="/financas/cadastro-usuario">Cadastre-se</a></small>
+
+
+    </body>
+
+{% endblock %}

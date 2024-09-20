@@ -1,0 +1,52 @@
+{% extends 'financas/base.html' %}
+{% block cabecalho %}
+<title>Detalhes Balancete</title>
+{% endblock %}
+
+{% block conteudo %}
+
+    <h3>Balancete: {{ balancete.nome }}</h3>
+    <p>Data: {{ balancete.data }}</p>
+
+    {% if total_receitas %}
+    {% for rec in balancete.receita_set.all %}
+    <div>
+        <p>Nome: {{ rec.nome }}</p>
+        <p>Descrição: {{ rec.descricao }}</p>
+        <p>Valor: {{ rec.valor }}</p>
+        <p>Data: {{ rec.data }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+    <p>Total: {{total_receitas}}</p>
+
+    {% else %}
+    <small>Não há receitas cadastradas para esse balancete.</small>
+    <p>Total: 0</p>
+    {% endif %}
+    <hr>
+
+    {% if total_despesas %}
+    {% for desp in balancete.despesa_set.all %}
+    <div>
+        <p>Nome: {{ desp.nome }}</p>
+        <p>Descrição: {{ desp.descricao }}</p>
+        <p>Valor: {{ desp.valor }}</p>
+        <p>Data: {{ desp.data }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+    <p>Total: {{ total_despesas }}</p>
+    {% else %}
+    <small>Não há despesas cadastradas para esse balancete.</small>
+    <p>Total: 0</p>
+    {% endif %}
+    <hr>
+
+    <p>Saldo: {{ total }}</p>
+
+    <p>
+        <a href="{% url 'financas:gerenciar-financas' %}">Voltar para a lista de balancetes</a>
+    </p>
+
+{% endblock %}

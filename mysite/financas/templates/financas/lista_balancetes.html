@@ -1,0 +1,29 @@
+{% extends 'financas/base.html' %}
+{% block cabecalho %}
+<title>Gerenciar Finanças</title>
+{% endblock %}
+
+{% block conteudo %}
+
+     | <a href="{% url 'financas:cadastro-receita' %}">Cadastrar Receita</a>
+     | <a href="{% url 'financas:cadastro-despesa' %}">Cadastrar Despesa</a>
+     | <a href="{% url 'financas:cadastro-balancete' %}">Cadastrar Novo Balancete</a>
+
+    <div class="lista-balancetes">
+        {% if balancetes %}
+        {% for b in balancetes %}
+        <div class="item-lista-balancetes">
+
+            <p>
+                {{ b.nome }}  |  {{ b.data }}  |  <a href="{% url 'financas:detalhes-balancete' b.id %}">detalhar</a>
+            </p>
+
+        </div>
+        <hr>
+        {% endfor %}
+        {% else %}
+        <p>Você ainda não cadastrou nenhum balancete</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
